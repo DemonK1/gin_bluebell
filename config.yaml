@@ -2,6 +2,8 @@ app:
   name: "GO_Web_CLI"
   mode: "dev"
   port: 8080
+  start_time: "2023-8-14"
+  machine-id: 1
 log:
   level: "debug"
   filename: "web_app.log"

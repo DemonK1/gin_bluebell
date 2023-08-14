@@ -1,13 +1,14 @@
 package main
 
 import (
-	"02-GO_Web_CLI/dao/mysql"
-	"02-GO_Web_CLI/dao/redis"
-	"02-GO_Web_CLI/logger"
-	"02-GO_Web_CLI/routes"
-	"02-GO_Web_CLI/settings"
 	"context"
 	"fmt"
+	"gin_bluebell/dao/mysql"
+	"gin_bluebell/dao/redis"
+	"gin_bluebell/logger"
+	"gin_bluebell/pkg/snowflake"
+	"gin_bluebell/routes"
+	"gin_bluebell/settings"
 	"log"
 	"net/http"
 	"os"
@@ -45,6 +46,15 @@ func main() {
 		fmt.Printf("init redis failed err: %v\n", err)
 		return
 	}
+
+	// 初始化雪花算法id
+	if err := snowflake.Init(
+		settings.Conf.StartTime, settings.Conf.MachineID,
+	); err != nil {
+		fmt.Printf("init snowflake failed err: %v\n", err)
+		return
+	}
+
 	defer redis.Close()
 	// 5.注册路由
 	r := routes.Setup()

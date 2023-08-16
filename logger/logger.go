@@ -3,7 +3,7 @@ package logger
 // log日志 的配置及初始化
 
 import (
-	"02-GO_Web_CLI/settings"
+	"gin_bluebell/settings"
 	"net"
 	"net/http"
 	"net/http/httputil"

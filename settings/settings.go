@@ -16,9 +16,9 @@ type AppConfig struct {
 	Name         string `mapstructure:"name"`
 	Mode         string `mapstructure:"mode"`
 	Version      string `mapstructure:"version"`
-	Port         int    `mapstructure:"port"`
 	StartTime    string `mapstructure:"start_time"`
 	MachineID    int64  `mapstructure:"machine_id"`
+	Port         int    `mapstructure:"port"`
 	*LogConfig   `mapstructure:"log"`
 	*MySQLConfig `mapstructure:"mysql"`
 	*RedisConfig `mapstructure:"redis"`
@@ -51,7 +51,7 @@ type RedisConfig struct {
 }
 
 // 使用 viper 管理配置
-func InIt() (err error) {
+func Init() (err error) {
 	viper.SetConfigFile("config.yaml") // 指定配置文件(包括文件名与类型)
 	// viper.SetConfigName("config") // 指定配置文件名称(不需要带后缀) 有重复名称 不是与下面type搭配使用的
 	// viper.SetConfigType("yaml")   // 指定配置文件类型 (专用于从远程配置信息时指定配置)

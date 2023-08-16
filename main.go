@@ -24,7 +24,7 @@ import (
 // GO Web开发较为通用的脚手架模板
 func main() {
 	// 1.加载配置
-	if err := settings.InIt(); err != nil {
+	if err := settings.Init(); err != nil {
 		fmt.Printf("init settings failed err: %v\n", err)
 		return
 	}
@@ -46,7 +46,7 @@ func main() {
 		fmt.Printf("init redis failed err: %v\n", err)
 		return
 	}
-
+	defer redis.Close()
 	// 初始化雪花算法id
 	if err := snowflake.Init(
 		settings.Conf.StartTime, settings.Conf.MachineID,
@@ -54,8 +54,6 @@ func main() {
 		fmt.Printf("init snowflake failed err: %v\n", err)
 		return
 	}
-
-	defer redis.Close()
 	// 5.注册路由
 	r := routes.Setup()
 	// 6.启动服务(优雅关机)

@@ -3,8 +3,8 @@ package mysql
 // mysql 的配置及初始化
 
 import (
-	"02-GO_Web_CLI/settings"
 	"fmt"
+	"gin_bluebell/settings"
 
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jmoiron/sqlx"

@@ -3,8 +3,8 @@ package redis
 // redis 的配置及初始化
 
 import (
-	"02-GO_Web_CLI/settings"
 	"fmt"
+	"gin_bluebell/settings"
 
 	"github.com/go-redis/redis"
 )

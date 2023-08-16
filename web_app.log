@@ -25,3 +25,23 @@
 {"level":"DEBUG","time":"2023-08-13T23:34:04.947+0800","caller":"02-GO_Web_CLI/main.go:36","msg":"logger init success..."}
 {"level":"INFO","time":"2023-08-13T23:34:14.992+0800","caller":"02-GO_Web_CLI/main.go:72","msg":"Shutdown Server ..."}
 {"level":"INFO","time":"2023-08-13T23:34:14.992+0800","caller":"02-GO_Web_CLI/main.go:81","msg":"Server exiting"}
+{"level":"DEBUG","time":"2023-08-14T22:26:36.472+0800","caller":"03-gin_bluebell/main.go:37","msg":"logger init success..."}
+{"level":"DEBUG","time":"2023-08-14T22:28:28.887+0800","caller":"03-gin_bluebell/main.go:37","msg":"logger init success..."}
+{"level":"DEBUG","time":"2023-08-14T22:37:49.986+0800","caller":"03-gin_bluebell/main.go:37","msg":"logger init success..."}
+{"level":"DEBUG","time":"2023-08-14T22:41:37.674+0800","caller":"03-gin_bluebell/main.go:37","msg":"logger init success..."}
+{"level":"DEBUG","time":"2023-08-14T22:45:47.475+0800","caller":"03-gin_bluebell/main.go:37","msg":"logger init success..."}
+{"level":"DEBUG","time":"2023-08-14T22:47:33.902+0800","caller":"03-gin_bluebell/main.go:37","msg":"logger init success..."}
+{"level":"DEBUG","time":"2023-08-14T22:51:35.883+0800","caller":"03-gin_bluebell/main.go:37","msg":"logger init success..."}
+{"level":"DEBUG","time":"2023-08-14T23:03:11.198+0800","caller":"03-gin_bluebell/main.go:37","msg":"logger init success..."}
+{"level":"DEBUG","time":"2023-08-14T23:10:40.194+0800","caller":"03-gin_bluebell/main.go:37","msg":"logger init success..."}
+{"level":"DEBUG","time":"2023-08-14T23:22:01.318+0800","caller":"03-gin_bluebell/main.go:37","msg":"logger init success..."}
+{"level":"DEBUG","time":"2023-08-14T23:23:04.924+0800","caller":"03-gin_bluebell/main.go:37","msg":"logger init success..."}
+{"level":"DEBUG","time":"2023-08-14T23:23:53.685+0800","caller":"03-gin_bluebell/main.go:37","msg":"logger init success..."}
+{"level":"DEBUG","time":"2023-08-14T23:26:15.576+0800","caller":"03-gin_bluebell/main.go:37","msg":"logger init success..."}
+{"level":"DEBUG","time":"2023-08-14T23:27:41.169+0800","caller":"03-gin_bluebell/main.go:37","msg":"logger init success..."}
+{"level":"DEBUG","time":"2023-08-14T23:28:01.128+0800","caller":"03-gin_bluebell/main.go:37","msg":"logger init success..."}
+{"level":"DEBUG","time":"2023-08-14T23:33:58.408+0800","caller":"03-gin_bluebell/main.go:37","msg":"logger init success..."}
+{"level":"DEBUG","time":"2023-08-14T23:53:22.949+0800","caller":"03-gin_bluebell/main.go:41","msg":"logger init success..."}
+{"level":"DEBUG","time":"2023-08-14T23:56:18.856+0800","caller":"03-gin_bluebell/main.go:37","msg":"logger init success..."}
+{"level":"DEBUG","time":"2023-08-14T23:59:15.302+0800","caller":"03-gin_bluebell/main.go:37","msg":"logger init success..."}
+{"level":"DEBUG","time":"2023-08-16T19:59:37.801+0800","caller":"03-gin_bluebell/main.go:37","msg":"logger init success..."}

@@ -15,12 +15,15 @@ func Setup() *gin.Engine {
 	r.Use(logger.GinLogger(), logger.GinRecovery(true))
 
 	// 注册路由
-	r.GET("/signup", controllers.SignUpHandler)
+	r.POST("/signup", controllers.SignUpHandler)
 
 	r.GET(
 		"/", func(c *gin.Context) {
 			c.String(http.StatusOK, "ok!")
 		},
 	)
+	if err := r.Run("127.0.0.1:8080"); err != nil {
+		panic(err)
+	}
 	return r
 }

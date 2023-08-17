@@ -1,9 +1,10 @@
 app:
   name: "gin_bluebell"
   mode: "dev"
-  port: 8080
+  version: "v0.0.1"
   start_time: "2023-08-14"
   machine_id: 1
+  port: 8080
 log:
   level: "debug"
   filename: "web_app.log"
@@ -14,7 +15,7 @@ mysql:
   port: 3306
   user: "root"
   password: "root"
-  dbname: "gin_demo01"
+  dbname: "gin_bluebell"
   max_open_conns: 200
   max_idle_conns: 50
 redis:

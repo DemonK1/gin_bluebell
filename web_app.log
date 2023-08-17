@@ -45,3 +45,5 @@
 {"level":"DEBUG","time":"2023-08-14T23:56:18.856+0800","caller":"03-gin_bluebell/main.go:37","msg":"logger init success..."}
 {"level":"DEBUG","time":"2023-08-14T23:59:15.302+0800","caller":"03-gin_bluebell/main.go:37","msg":"logger init success..."}
 {"level":"DEBUG","time":"2023-08-16T19:59:37.801+0800","caller":"03-gin_bluebell/main.go:37","msg":"logger init success..."}
+{"level":"DEBUG","time":"2023-08-16T20:39:50.048+0800","caller":"03-gin_bluebell/main.go:37","msg":"logger init success..."}
+{"level":"DEBUG","time":"2023-08-16T20:40:00.148+0800","caller":"03-gin_bluebell/main.go:37","msg":"logger init success..."}

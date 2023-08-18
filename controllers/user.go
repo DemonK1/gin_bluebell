@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"fmt"
 	"gin_bluebell/logic"
 	"gin_bluebell/models"
 	"github.com/gin-gonic/gin"
@@ -45,7 +46,15 @@ func SignUpHandler(c *gin.Context) {
 	// }
 
 	// 2.业务处理
-	logic.SignUp()
+	if err := logic.SignUp(p); err != nil {
+		fmt.Printf("注册失败错误: %v", err)
+		c.JSON(
+			http.StatusOK, gin.H{
+				"msg": "注册失败",
+			},
+		)
+		return
+	}
 	// 3.返回响应
 	c.JSON(
 		http.StatusOK, gin.H{

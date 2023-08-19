@@ -11,7 +11,11 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func Setup() *gin.Engine {
+func Setup(mode string) *gin.Engine {
+	if mode == gin.ReleaseMode {
+		gin.SetMode(gin.ReleaseMode) // gin设置成发布模式
+	}
+
 	// 初始化gin框架内置的校验器使用的翻译器
 	if err := controllers.InitTrans("zh"); err != nil {
 		fmt.Printf("init validator trans failed,err:%v\n", err)

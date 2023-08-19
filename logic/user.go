@@ -6,6 +6,7 @@ import (
 	"gin_bluebell/pkg/snowflake"
 )
 
+// SignUp 注册逻辑处理
 func SignUp(p *models.ParamSignUp) (err error) {
 	// 1.判断用户存不存在
 	err = mysql.CheckUserExist(p.Username)
@@ -22,4 +23,9 @@ func SignUp(p *models.ParamSignUp) (err error) {
 	}
 	// 4.保存进数据库
 	return mysql.InsertUser(user)
+}
+
+// Login 登录逻辑处理
+func Login(p *models.ParamLogin) error {
+	return mysql.Login(p)
 }

@@ -1,13 +1,13 @@
 package controllers
 
 import (
-	"fmt"
+	"errors"
+	"gin_bluebell/dao/mysql"
 	"gin_bluebell/logic"
 	"gin_bluebell/models"
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
 	"go.uber.org/zap"
-	"net/http"
 )
 
 // SignUpHandler 注册函数
@@ -20,18 +20,10 @@ func SignUpHandler(c *gin.Context) {
 		// 判断err是不是validator.ValidationErrors类型
 		errs, ok := err.(validator.ValidationErrors)
 		if !ok {
-			c.JSON(
-				http.StatusOK, gin.H{
-					"msg": err.Error(),
-				},
-			)
+			ResponseErrorWithMsg(c, CodeInvalidParam, err.Error())
 			return
 		}
-		c.JSON(
-			http.StatusOK, gin.H{
-				"msg": errs.Translate(trans),
-			},
-		)
+		ResponseErrorWithMsg(c, CodeInvalidParam, errs.Translate(trans))
 		return
 	}
 	// 手动判断参数
@@ -48,20 +40,15 @@ func SignUpHandler(c *gin.Context) {
 
 	// 2.业务处理
 	if err := logic.SignUp(p); err != nil {
-		fmt.Printf("注册失败错误: %v", err)
-		c.JSON(
-			http.StatusOK, gin.H{
-				"msg": "注册失败",
-			},
-		)
+		if errors.Is(err, mysql.ErrorUserExist) {
+			ResponseError(c, CodeUserExist)
+			return
+		}
+		ResponseError(c, CodeServerBusy)
 		return
 	}
 	// 3.返回响应
-	c.JSON(
-		http.StatusOK, gin.H{
-			"msg": "注册成功",
-		},
-	)
+	ResponseSuccess(c, nil)
 }
 
 // LoginHandler 登录函数
@@ -74,33 +61,21 @@ func LoginHandler(c *gin.Context) {
 		// 判断err是不是validator.ValidationErrors类型
 		errs, ok := err.(validator.ValidationErrors)
 		if !ok {
-			c.JSON(
-				http.StatusOK, gin.H{
-					"msg": err.Error(),
-				},
-			)
+			ResponseError(c, CodeInvalidParam)
 			return
 		}
-		c.JSON(
-			http.StatusOK, gin.H{
-				"msg": errs.Translate(trans),
-			},
-		)
+		ResponseErrorWithMsg(c, CodeInvalidParam, errs.Translate(trans))
 		return
 	}
 	// 2.业务逻辑处理
 	if err := logic.Login(p); err != nil {
-		c.JSON(
-			http.StatusOK, gin.H{
-				"msg": err.Error(),
-			},
-		)
+		if errors.Is(err, mysql.ErrorInvalidPassword) {
+			ResponseError(c, CodeInvalidPassword)
+			return
+		}
+		ResponseError(c, CodeInvalidParam)
 		return
 	}
 	// 3.返回响应
-	c.JSON(
-		http.StatusOK, gin.H{
-			"msg": "登陆成功",
-		},
-	)
+	ResponseSuccess(c, nil)
 }

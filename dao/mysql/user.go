@@ -10,6 +10,13 @@ import (
 
 const secret = "mainarr@yeah.net"
 
+var (
+	ErrorUserExist       = errors.New("用户已存在")
+	ErrorUserNotExist    = errors.New("用户不存在")
+	ErrorInvalidPassword = errors.New("密码错误")
+)
+
+// CheckUserExist 注册时对数据库的操作
 func CheckUserExist(username string) (err error) {
 	sqlStr := `select count(user_id) from user where username=?`
 	var count int
@@ -17,7 +24,7 @@ func CheckUserExist(username string) (err error) {
 		return err
 	}
 	if count > 0 {
-		return errors.New("用户已存在")
+		return ErrorUserExist
 	}
 	return
 }
@@ -38,6 +45,7 @@ func encryptPassword(oPassword string) string {
 	return hex.EncodeToString(pswMd5)
 }
 
+// Login 登陆时对数据库的操作
 func Login(p *models.ParamLogin) (err error) {
 	var user models.User
 	oPassword := p.Password // 用户输入的密码
@@ -45,7 +53,7 @@ func Login(p *models.ParamLogin) (err error) {
 	err = db.Get(&user, sqlStr, p.Username)
 	// 判断用户是否存在
 	if err == sql.ErrNoRows {
-		return errors.New("用户不存在")
+		return ErrorUserNotExist
 	}
 	// 查询数据库中是否存在
 	if err != nil {
@@ -54,7 +62,7 @@ func Login(p *models.ParamLogin) (err error) {
 	// 判断密码是否正确
 	password := encryptPassword(oPassword)
 	if password != user.Password {
-		return errors.New("密码错误")
+		return ErrorInvalidPassword
 	}
 	return nil
 }

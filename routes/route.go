@@ -6,9 +6,9 @@ import (
 	"fmt"
 	"gin_bluebell/controllers"
 	"gin_bluebell/logger"
-	"net/http"
-
+	"gin_bluebell/middlewares"
 	"github.com/gin-gonic/gin"
+	"net/http"
 )
 
 func Setup(mode string) *gin.Engine {
@@ -28,12 +28,16 @@ func Setup(mode string) *gin.Engine {
 	r.POST("/signup", controllers.SignUpHandler)
 	// 登录路由
 	r.POST("/login", controllers.LoginHandler)
+	r.GET("/ping", middlewares.JWTAuthMiddleware(), func(c *gin.Context) {
+		// 如果是登陆用户判断请求头中是否有 有效的JWT
+		c.String(http.StatusOK, "pong")
+	})
 
-	r.GET(
-		"/", func(c *gin.Context) {
-			c.String(http.StatusOK, "ok!")
-		},
-	)
+	r.NoRoute(func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{
+			"msg": "404",
+		})
+	})
 	if err := r.Run("127.0.0.1:8080"); err != nil {
 		panic(err)
 	}

@@ -51,6 +51,7 @@ func Login(p *models.ParamLogin) (err error) {
 	oPassword := p.Password // 用户输入的密码
 	sqlStr := `select user_id,username,password from user where username=?`
 	err = db.Get(&user, sqlStr, p.Username)
+	// return user, nil
 	// 判断用户是否存在
 	if err == sql.ErrNoRows {
 		return ErrorUserNotExist

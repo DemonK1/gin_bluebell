@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"gin_bluebell/controllers"
 	"gin_bluebell/logger"
+	"gin_bluebell/middlewares"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -24,6 +25,7 @@ func Setup(mode string) *gin.Engine {
 	r.Use(logger.GinLogger(), logger.GinRecovery(true))
 
 	v1 := r.Group("/api/v1")
+	v1.Use(middlewares.JWTAuthMiddleware()) // 应用JWT中间件
 
 	// 注册路由
 	v1.POST("/signup", controllers.SignUpHandler)
@@ -33,6 +35,7 @@ func Setup(mode string) *gin.Engine {
 	{
 		v1.GET("/community", controllers.CommunityHandel)
 		v1.GET("/community/:id", controllers.CommunityDetailHandel)
+		v1.POST("/post", controllers.CreatePostHandel)
 	}
 
 	r.NoRoute(func(c *gin.Context) {

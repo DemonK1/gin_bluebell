@@ -25,13 +25,14 @@ func Setup(mode string) *gin.Engine {
 	r.Use(logger.GinLogger(), logger.GinRecovery(true))
 
 	v1 := r.Group("/api/v1")
-	v1.Use(middlewares.JWTAuthMiddleware()) // 应用JWT中间件
 
 	// 注册路由
 	v1.POST("/signup", controllers.SignUpHandler)
 	// 登录路由
 	v1.POST("/login", controllers.LoginHandler)
 
+	// 应用JWT中间件 与顺序有关 在需要token验证的路由之前注册中间件
+	v1.Use(middlewares.JWTAuthMiddleware())
 	{
 		v1.GET("/community", controllers.CommunityHandel)
 		v1.GET("/community/:id", controllers.CommunityDetailHandel)

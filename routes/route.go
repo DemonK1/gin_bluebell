@@ -32,6 +32,7 @@ func Setup(mode string) *gin.Engine {
 
 	{
 		v1.GET("/community", controllers.CommunityHandel)
+		v1.GET("/community/:id", controllers.CommunityDetailHandel)
 	}
 
 	r.NoRoute(func(c *gin.Context) {

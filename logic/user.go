@@ -32,7 +32,7 @@ func Login(p *models.ParamLogin) (token string, err error) {
 		return "", err
 	}
 	var user models.User
-	token, err = jwt.GenToken(user.UserId, user.Username)
+	token, err = jwt.GenToken(user.UserId)
 	if err != nil {
 		return "", err
 	}

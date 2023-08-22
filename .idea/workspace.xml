@@ -4,17 +4,14 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4169ac0b-7551-470f-bd3a-d70d97cab334" name="更改" comment="author_id为空 修正JWT解析中间件的代码">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/post.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/post.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/mysql/post.go" beforeDir="false" afterPath="$PROJECT_DIR$/dao/mysql/post.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/mysql/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/dao/mysql/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logic/post.go" beforeDir="false" afterPath="$PROJECT_DIR$/logic/post.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logic/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/logic/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middlewares/auth.go" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/auth.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/post.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/post.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/jwt/jwt.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/jwt/jwt.go" afterDir="false" />
+    <list default="true" id="4169ac0b-7551-470f-bd3a-d70d97cab334" name="更改" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/request.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/request.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/route.go" beforeDir="false" afterPath="$PROJECT_DIR$/routes/route.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_app.log" beforeDir="false" afterPath="$PROJECT_DIR$/web_app.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,37 +28,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
-    &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/02-Code/02-total_Project/01-Go/03-gin_bluebell&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "go.import.settings.migrated": "true",
+    "go.sdk.automatically.set": "true",
+    "last_opened_file_path": "D:/01-study/Golang/03-gin实战李文周课程/Go Web开发进阶实战（gin框架）/课件/bluebell完整代码/bluebell",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="实现创建帖子功能" />
-    <MESSAGE value="JWT中间件验证 token 的补充" />
-    <MESSAGE value="author_id为空 修正JWT解析中间件的代码" />
-    <option name="LAST_COMMIT_MESSAGE" value="author_id为空 修正JWT解析中间件的代码" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>

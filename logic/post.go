@@ -14,6 +14,7 @@ func CreatePost(p *models.Post) error {
 	return mysql.CreatePost(p)
 }
 
+// GetPostById 获取帖子详情
 func GetPostById(pid int64) (data *models.ApiPostDetail, err error) {
 	// 查询并拼接接口想用的数据
 	// 查询帖子信息
@@ -38,6 +39,36 @@ func GetPostById(pid int64) (data *models.ApiPostDetail, err error) {
 		AuthorName:      userData.Username,
 		Post:            postData,
 		CommunityDetail: communityData,
+	}
+	return
+}
+
+// GetPostList 获取帖子列表
+func GetPostList(page, size int64) (data []*models.ApiPostDetail, err error) {
+	postList, err := mysql.GetPostList(page, size)
+	if err != nil {
+		return nil, err
+	}
+	data = make([]*models.ApiPostDetail, 0, len(postList))
+	for _, post := range postList {
+		// 根据用户id获取用户详情
+		userData, err := mysql.GetUserById(post.AuthorID)
+		if err != nil {
+			zap.L().Error("mysql.GetUserById(postData.AuthorID) failed", zap.Error(err))
+			continue
+		}
+		// 根据社区id获取社区详情
+		community, err := mysql.GetCommunityDetailByID(post.CommunityID)
+		if err != nil {
+			zap.L().Error("mysql.GetCommunityDetailByID(postData.CommunityID)", zap.Error(err))
+			continue
+		}
+		postDetail := &models.ApiPostDetail{
+			AuthorName:      userData.Username,
+			Post:            post,
+			CommunityDetail: community,
+		}
+		data = append(data, postDetail)
 	}
 	return
 }

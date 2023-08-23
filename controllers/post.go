@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"fmt"
 	"gin_bluebell/logic"
 	"gin_bluebell/models"
 	"github.com/gin-gonic/gin"
@@ -52,4 +53,33 @@ func GetPostDetailHandel(c *gin.Context) {
 	}
 	// 3. 返回参数
 	ResponseSuccess(c, data)
+}
+
+// GetPostListHandel 获取帖子列表
+func GetPostListHandel(c *gin.Context) {
+	// 获取分页参数
+	pageStr := c.Query("page")
+	sizeStr := c.Query("size")
+	var (
+		page int64
+		size int64
+		err  error
+	)
+	page, err = strconv.ParseInt(pageStr, 10, 64)
+	if err != nil {
+		page = 1
+	}
+	size, err = strconv.ParseInt(sizeStr, 10, 64)
+	if err != nil {
+		size = 10
+	}
+
+	// 获取数据
+	list, err := logic.GetPostList(page, size)
+	fmt.Printf("我是错误%v\n", err)
+	if err != nil {
+		return
+	}
+	// 返回相应
+	ResponseSuccess(c, list)
 }

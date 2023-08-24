@@ -40,7 +40,7 @@ func encryptPassword(oPassword string) string {
 }
 
 // Login 登陆时对数据库的操作
-func Login(p *models.ParamLogin) (err error) {
+func Login(p *models.ParamLogin) (users *models.User, err error) {
 	var user models.User
 	oPassword := p.Password // 用户输入的密码
 	sqlStr := `select user_id,username,password from user where username=?`
@@ -48,7 +48,7 @@ func Login(p *models.ParamLogin) (err error) {
 	// return user, nil
 	// 判断用户是否存在
 	if err == sql.ErrNoRows {
-		return ErrorUserNotExist
+		return nil, ErrorUserNotExist
 	}
 	// 查询数据库中是否存在
 	if err != nil {
@@ -57,9 +57,9 @@ func Login(p *models.ParamLogin) (err error) {
 	// 判断密码是否正确
 	password := encryptPassword(oPassword)
 	if password != user.Password {
-		return ErrorInvalidPassword
+		return nil, ErrorInvalidPassword
 	}
-	return nil
+	return &user, nil
 }
 
 // GetUserById 根据id获取用户信息

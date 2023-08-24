@@ -27,14 +27,15 @@ func SignUp(p *models.ParamSignUp) (err error) {
 }
 
 // Login 登录逻辑处理
-func Login(p *models.ParamLogin) (token string, err error) {
-	if err := mysql.Login(p); err != nil {
-		return "", err
-	}
-	var user models.User
-	token, err = jwt.GenToken(user.UserId)
+func Login(p *models.ParamLogin) (users *models.User, err error) {
+	users, err = mysql.Login(p)
 	if err != nil {
-		return "", err
+		return nil, err
 	}
-	return token, err
+	token, err := jwt.GenToken(users.UserId)
+	if err != nil {
+		return nil, err
+	}
+	users.Token = token
+	return users, nil
 }

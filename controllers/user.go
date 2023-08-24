@@ -68,7 +68,7 @@ func LoginHandler(c *gin.Context) {
 		return
 	}
 	// 2.业务逻辑处理
-	token, err := logic.Login(p)
+	user, err := logic.Login(p)
 	if err != nil {
 		zap.L().Error("logic.Login failed", zap.String("username", p.Username))
 		if errors.Is(err, mysql.ErrorInvalidPassword) {
@@ -79,5 +79,9 @@ func LoginHandler(c *gin.Context) {
 		return
 	}
 	// 3.返回响应
-	ResponseSuccess(c, token)
+	ResponseSuccess(c, gin.H{
+		"username": user.Username,
+		"userid":   user.UserId,
+		"token":    user.Token,
+	})
 }

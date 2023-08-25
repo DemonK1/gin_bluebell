@@ -16,7 +16,7 @@ import (
 type ResponseData struct {
 	Code ResCode     `json:"code"`
 	Msg  interface{} `json:"msg"`
-	Data interface{} `json:"data,omitempty"` // omitempty 空值不返回
+	Data interface{} `json:"data"`
 }
 
 // ResponseError 错误返回对应的错误码ResCode

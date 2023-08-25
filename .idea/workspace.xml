@@ -4,17 +4,12 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4169ac0b-7551-470f-bd3a-d70d97cab334" name="更改" comment="修改登陆时返回的token userid等参数结构">
-      <change afterPath="$PROJECT_DIR$/controllers/vote.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dao/redis/keys.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dao/redis/vote.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logic/vote.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/vote.go" afterDir="false" />
+    <list default="true" id="4169ac0b-7551-470f-bd3a-d70d97cab334" name="更改" comment="分页展示帖子列表">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/response.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/response.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logic/post.go" beforeDir="false" afterPath="$PROJECT_DIR$/logic/post.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/route.go" beforeDir="false" afterPath="$PROJECT_DIR$/routes/route.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dao/mysql/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/dao/mysql/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logic/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/logic/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/user.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web_app.log" beforeDir="false" afterPath="$PROJECT_DIR$/web_app.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,21 +17,11 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Go File" />
-      </list>
-    </option>
-  </component>
   <component name="GOROOT" url="file://D:/download/GoSDK" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="2UFjCKxWaaMW7MRl6LzZ5NaMxRy" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
   <component name="ProjectViewState">
     <option name="autoscrollToSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -44,7 +29,6 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;DefaultGoTemplateProperty&quot;: &quot;Go File&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
@@ -82,8 +66,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="分页展示帖子列表" />
-    <MESSAGE value="修改登陆时返回的token userid等参数结构" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改登陆时返回的token userid等参数结构" />
+    <option name="LAST_COMMIT_MESSAGE" value="分页展示帖子列表" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>

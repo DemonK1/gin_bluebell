@@ -2,22 +2,16 @@ package logic
 
 import (
 	"gin_bluebell/dao/mysql"
-	"gin_bluebell/dao/redis"
 	"gin_bluebell/models"
 	"gin_bluebell/pkg/snowflake"
 	"go.uber.org/zap"
 )
 
-func CreatePost(p *models.Post) (err error) {
+func CreatePost(p *models.Post) error {
 	// 1. 生成 post id
 	p.ID = snowflake.GenID()
 	// 2. 保存进数据库
-	err = mysql.CreatePost(p)
-	if err != nil {
-		return err
-	}
-	err = redis.CreatePost(p.ID)
-	return
+	return mysql.CreatePost(p)
 }
 
 // GetPostById 获取帖子详情

@@ -13,7 +13,7 @@ type Post struct {
 }
 
 type ApiPostDetail struct {
-	AuthorName       string                    `json:"author_name"`
-	*Post            `json:"post"`             // 嵌入帖子结构体
-	*CommunityDetail `json:"community_detail"` // 嵌入社区信息
+	AuthorName       string        `json:"author_name"`
+	*CommunityDetail               // 嵌入社区信息
+	*Post            `json:"post"` // 嵌入帖子结构体
 }

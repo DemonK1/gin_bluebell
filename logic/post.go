@@ -78,3 +78,42 @@ func GetPostList(page, size int64) (data []*models.ApiPostDetail, err error) {
 	}
 	return
 }
+
+// GetPostList2 根据时间或分数获取帖子列表
+func GetPostList2(p *models.ParamPostList) (data []*models.ApiPostDetail, err error) {
+	// 1. 去redis查询id列表
+	ids, err := redis.GetPostIDInOrder(p)
+	if err != nil {
+		return
+	}
+	if len(ids) == 0 {
+		return
+	}
+	// 2. 根据id去mysql数据库查询帖子详情信息
+	postList, err := mysql.GetPostListByIDs(ids)
+	if err != nil {
+		return
+	}
+	// 将帖子的作者及分区信息查询出来 填充到帖子中
+	for _, post := range postList {
+		// 根据用户id获取用户详情
+		userData, err := mysql.GetUserById(post.AuthorID)
+		if err != nil {
+			zap.L().Error("mysql.GetUserById(postData.AuthorID) failed", zap.Error(err))
+			continue
+		}
+		// 根据社区id获取社区详情
+		community, err := mysql.GetCommunityDetailByID(post.CommunityID)
+		if err != nil {
+			zap.L().Error("mysql.GetCommunityDetailByID(postData.CommunityID)", zap.Error(err))
+			continue
+		}
+		postDetail := &models.ApiPostDetail{
+			AuthorName:      userData.Username,
+			Post:            post,
+			CommunityDetail: community,
+		}
+		data = append(data, postDetail)
+	}
+	return
+}

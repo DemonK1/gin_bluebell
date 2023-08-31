@@ -83,3 +83,32 @@ func GetPostListHandel(c *gin.Context) {
 	// 返回相应
 	ResponseSuccess(c, list)
 }
+
+// GetPostListHandel2 根据时间或分数获取帖子列表
+func GetPostListHandel2(c *gin.Context) {
+	// 根据前端传过来的参数动态的获取帖子列表
+	// 按创建时间排序 或者 按照 分数排序
+	// 1. 获取参数
+	// 2. 去redis查询id列表
+	// 3. 根据id去数据库查询帖子详细信息
+	// 初始化结构体时指定初始参数
+	p := &models.ParamPostList{
+		Page:  1,
+		Size:  10,
+		Order: models.OrderTime,
+	}
+	if err := c.ShouldBindQuery(p); err != nil {
+		zap.L().Error("c.ShouldBindQuery(p) failed", zap.Error(err))
+		ResponseError(c, CodeInvalidParam)
+		return
+	}
+	// 获取数据
+	data, err := logic.GetPostList2(p)
+	if err != nil {
+		zap.L().Error("logic.GetPostList2() failed", zap.Error(err))
+		ResponseError(c, CodeServerBusy)
+		return
+	}
+	// 返回响应
+	ResponseSuccess(c, data)
+}
